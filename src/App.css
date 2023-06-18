@@ -1,0 +1,67 @@
+body {
+    background-color: #F5EFE5;
+    margin: 0;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.video-container {
+    color: black;
+    padding: 30px;
+}
+
+.chat-container {
+    background-color: #A6AEA5;
+    border-radius: 5px;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.video-player {
+    height: 300px;
+    margin-bottom: 30px;
+}
+
+.video-player video {
+    width: 100%;
+    height: 100%;
+}
+
+.video-options {
+    display: flex;
+
+}
+
+.link-container {
+    flex-basis: 80%;
+    margin-right: 12px;
+}
+
+.button-container {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 12px;
+}
+
+.link-input {
+    border: 1px solid black; 
+    border-radius: 4px; 
+    background-color: white; 
+    padding: 8px;
+    width: calc(100% - 16px);
+}
+
+.view-button {
+    border-radius: 4px; 
+    background-color: #2C5C67; 
+    color: white; 
+    padding: 8px 16px; 
+    border: none;
+    height: 100%;
+    width: 100%;
+}
