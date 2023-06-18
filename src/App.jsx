@@ -1,6 +1,7 @@
 import './App.css';
 import Youtube from 'react-youtube';
 import {useState} from 'react';
+import ChatContainer from './containers/ChatContainer/ChatContainer';
 
 export default function App() {
     const [textFieldValue, setTextFieldValue] = useState('');
@@ -47,7 +48,7 @@ export default function App() {
                 </div>
             </div>
             <div className='chat-container'>
-                
+                <ChatContainer/>
             </div>
         </div>
     );
