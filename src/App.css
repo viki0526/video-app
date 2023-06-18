@@ -19,10 +19,10 @@ body {
     padding-top: 30px;
     padding-left: 10px;
     padding-right: 10px;
+    height: 90vh;
 }
 
 .video-player {
-    height: 300px;
     margin-bottom: 30px;
 }
 
@@ -64,4 +64,17 @@ body {
     border: none;
     height: 100%;
     width: 100%;
+}
+
+.video-summary {
+    margin-top: 30px;
+    font-family: 'Arial';
+}
+
+.summary-title {
+    margin-bottom: 10px;
+}
+
+.summary-body {
+
 }
