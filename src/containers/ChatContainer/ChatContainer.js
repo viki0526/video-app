@@ -13,7 +13,6 @@ import "react-chat-elements/dist/main.css"
 //     />
 //   }
   
-  
   export function useForceUpdate() {
     const [value, setValue] = useState(0)
     return () => setValue(() => value + 1)
@@ -30,14 +29,11 @@ export default function ChatContainer() {
   const forceUpdate = useForceUpdate()
 
   const addMessage = (message, isUser) => {
-    setStatus('read')    
-    setMessageListArray([...messageListArray, generateMessage(message, isUser)])
-    clearRef()
-    forceUpdate()
-  }
-
-  const generateMessage = (message, isUser) => {
-      return {
+    if (!message) {
+        return
+    }   
+    setStatus('read')
+    setMessageListArray(curr => [...curr, {
         type: 'text',
         id: String(Math.random()),
         position: isUser ? 'right' : 'left', 
@@ -48,18 +44,15 @@ export default function ChatContainer() {
         dateString: 'now',
       //   avatar: `data:image/png;base64,${photo(20)}`,
         titleColor: 'grey',
-        forwarded: true,
-        replyButton: true,
-        removeButton: true,
         status: 'received',
         notch: true,
         copiableDate: true,
         retracted: false,
         className: '',
-      }
-    }
-
-    console.log(inputReferance.current)
+      }])
+    clearRef()
+    forceUpdate()
+  }
 
   return (
     <div className='right-panel 
@@ -99,8 +92,8 @@ export default function ChatContainer() {
               return true
             }
             if (e.charCode === 13) {
+              addMessage(inputReferance.current?.value, true)
               clearRef()
-              addMessage()
             }
           }}
           rightButtons={<Button text='Submit' onClick={() => addMessage(inputReferance.current?.value, true)} />}
