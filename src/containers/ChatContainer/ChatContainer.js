@@ -57,15 +57,21 @@ export default function ChatContainer() {
   }
 
   const onSend = () => {
-    let message = inputReferance.current?.value
-    addMessage(message, true)
-    getBotResponse(message)
+    let message = inputReferance.current?.value;
+    addMessage(message, true);
+    getBotResponse(message);
+    inputReferance.current.value = "";
   }
 
   //echo for now
   const getBotResponse = async (message) => {
-    await sleep(1000)
-    addMessage(message, false)
+      const url_ws = new WebSocket("ws://127.0.0.1:5000/ask_query");
+      url_ws.onopen = (event) => {
+          url_ws.send(message);
+      }
+      url_ws.onmessage = (event) => {
+          addMessage(event.data, false)
+      }
   }
 
   return (

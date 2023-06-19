@@ -1,15 +1,29 @@
 import './App.css';
 import Youtube from 'react-youtube';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import ChatContainer from './containers/ChatContainer/ChatContainer';
+
 
 export default function App() {
     const [textFieldValue, setTextFieldValue] = useState('');
     const [videoId, setVideoId] = useState('5-O8Da5oowo');
 
+
+
     const handleViewButton = () => {
         const id = extractID(textFieldValue);
+        const url_ws = new WebSocket("ws://127.0.0.1:5000/set_url");
+        url_ws.onopen = (event) => {
+            url_ws.send(textFieldValue);
+        }
+        url_ws.onmessage = (event) => {
+            const sum_ws = new WebSocket("ws://127.0.0.1:5000/summarize");
+            sum_ws.onmessage = (event) => {
+                document.getElementById("summary").innerText = event.data;
+            }
+        }
         setVideoId(id);
+
     }
 
     const extractID = (url) => {
@@ -42,7 +56,7 @@ export default function App() {
                     <div className='summary-title'>
                         VIDEO SUMMARY
                     </div>
-                    <div className='summary-body'>
+                    <div className='summary-body' id="summary">
 
                     </div>
                 </div>
