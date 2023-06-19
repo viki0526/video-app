@@ -91,7 +91,7 @@ export default function ChatContainer() {
         />
         <Input
             className='rce-example-input'
-            placeholder='Write your message here.'
+            placeholder='Ask a question...'
             defaultValue=''
             referance={inputReferance}
             clear={(clear) => (clearRef = clear)}
@@ -105,7 +105,7 @@ export default function ChatContainer() {
                 clearRef()
             }
             }}
-            rightButtons={<Button text='Submit' onClick={onSend} />}
+            rightButtons={<Button text='&nbsp; &#8680;&nbsp;' onClick={onSend} />}
         />
     </div>
   )
