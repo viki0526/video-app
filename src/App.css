@@ -10,6 +10,7 @@ body {
 }
 
 .video-container {
+    background-color: #F5EFE5;
     color: black;
     padding: 30px;
 }

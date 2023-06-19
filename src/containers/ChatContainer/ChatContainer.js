@@ -45,7 +45,7 @@ export default function ChatContainer() {
         date: +new Date(),
         dateString: 'now',
       //   avatar: `data:image/png;base64,${photo(20)}`,
-        titleColor: 'black',
+        titleColor: 'darkblue',
         status: 'received',
         notch: true,
         copiableDate: true,
@@ -80,8 +80,8 @@ export default function ChatContainer() {
         downButton={true}
         downButtonBadge={10}
         sendMessagePreview={true}
-        messageBoxStyles={{ backgroundColor: 'lightgrey' }}
-        notchStyle={{ fill: 'lightgrey' }}
+        messageBoxStyles={{ backgroundColor: 'white' }}
+        notchStyle={{ fill: 'white' }}
         />
         <Input
             className='rce-example-input'
