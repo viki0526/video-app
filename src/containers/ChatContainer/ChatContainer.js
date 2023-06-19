@@ -13,6 +13,8 @@ import "react-chat-elements/dist/main.css"
 //     />
 //   }
   
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
   export function useForceUpdate() {
     const [value, setValue] = useState(0)
     return () => setValue(() => value + 1)
@@ -21,7 +23,7 @@ import "react-chat-elements/dist/main.css"
 let clearRef = () => {}
 
 export default function ChatContainer() { 
-    const [messageListArray, setMessageListArray] = useState([])
+  const [messageListArray, setMessageListArray] = useState([])
   const [status, setStatus] = useState('')
   const messageListReferance = useRef()
   const inputReferance = useRef()
@@ -43,7 +45,7 @@ export default function ChatContainer() {
         date: +new Date(),
         dateString: 'now',
       //   avatar: `data:image/png;base64,${photo(20)}`,
-        titleColor: 'grey',
+        titleColor: 'black',
         status: 'received',
         notch: true,
         copiableDate: true,
@@ -52,6 +54,18 @@ export default function ChatContainer() {
       }])
     clearRef()
     forceUpdate()
+  }
+
+  const onSend = () => {
+    let message = inputReferance.current?.value
+    addMessage(message, true)
+    getBotResponse(message)
+  }
+
+  //echo for now
+  const getBotResponse = async (message) => {
+    await sleep(1000)
+    addMessage(message, false)
   }
 
   return (
@@ -66,8 +80,8 @@ export default function ChatContainer() {
         downButton={true}
         downButtonBadge={10}
         sendMessagePreview={true}
-        messageBoxStyles={{ backgroundColor: 'lightgreen' }}
-        notchStyle={{ fill: 'lightgreen' }}
+        messageBoxStyles={{ backgroundColor: 'lightgrey' }}
+        notchStyle={{ fill: 'lightgrey' }}
       />
 
       <div
@@ -92,11 +106,11 @@ export default function ChatContainer() {
               return true
             }
             if (e.charCode === 13) {
-              addMessage(inputReferance.current?.value, true)
+              onSend()
               clearRef()
             }
           }}
-          rightButtons={<Button text='Submit' onClick={() => addMessage(inputReferance.current?.value, true)} />}
+          rightButtons={<Button text='Submit' onClick={onSend} />}
         />
       </div>
     </div>
