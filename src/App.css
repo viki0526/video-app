@@ -6,6 +6,7 @@ body {
 .app-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    height: 100vh;
 }
 
 .video-container {
@@ -16,10 +17,7 @@ body {
 .chat-container {
     background-color: #A6AEA5;
     border-radius: 5px;
-    padding-top: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 90vh;
+    height: 100%;
 }
 
 .video-player {

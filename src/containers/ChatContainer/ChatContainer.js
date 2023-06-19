@@ -72,7 +72,7 @@ export default function ChatContainer() {
     <div className='right-panel 
     rce-example-messageList'
     >
-      <MessageList
+        <MessageList
         className='message-list'
         referance={messageListReferance}
         dataSource={messageListArray}
@@ -82,37 +82,25 @@ export default function ChatContainer() {
         sendMessagePreview={true}
         messageBoxStyles={{ backgroundColor: 'lightgrey' }}
         notchStyle={{ fill: 'lightgrey' }}
-      />
-
-      <div
-        // style={{
-        //   position: 'fixed',
-        //   bottom: 0,
-        //   right: 0,
-        //   left: 0,
-        //   margin: '0 auto 1rem auto',
-        //   width: '60%',
-        // }}
-      >
+        />
         <Input
-          className='rce-example-input'
-          placeholder='Write your message here.'
-          defaultValue=''
-          referance={inputReferance}
-          clear={(clear) => (clearRef = clear)}
-          maxHeight={50}
-          onKeyPress={(e) => {
+            className='rce-example-input'
+            placeholder='Write your message here.'
+            defaultValue=''
+            referance={inputReferance}
+            clear={(clear) => (clearRef = clear)}
+            maxHeight={50}
+            onKeyPress={(e) => {
             if (e.shiftKey && e.charCode === 13) {
-              return true
+                return true
             }
             if (e.charCode === 13) {
-              onSend()
-              clearRef()
+                onSend()
+                clearRef()
             }
-          }}
-          rightButtons={<Button text='Submit' onClick={onSend} />}
+            }}
+            rightButtons={<Button text='Submit' onClick={onSend} />}
         />
-      </div>
     </div>
   )
 }
